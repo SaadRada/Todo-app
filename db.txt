@@ -1,0 +1,17 @@
+CREATE TABLE users(userid int PRIMARY KEY AUTO_INCREMENT,
+                  userfullname varchar(25) not null,
+                  userpassword varchar(25) not null,
+                  usercountry varchar(25) not null,
+                  userdateacc datetime not null,
+                  usertype boolean default 0);
+
+
+CREATE TABLE todo(todoid int PRIMARY KEY AUTO_INCREMENT,
+                  todotitle text not null,
+                  tododatecreation datetime not null,
+                  tododatefinishe date not null,
+                  todotype varchar(25) not null,
+                  todoprogress boolean default 0,
+                  todouser int not null,
+                  
+                  CONSTRAINT FOREIGN KEY (todouser) REFERENCES users(userid) ON DELETE CASCADE ON UPDATE CASCADE)
